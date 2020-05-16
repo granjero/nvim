@@ -9,11 +9,17 @@ call plug#begin('~/.config/nvim/plugged')
 	" Emmet-vim
 	Plug 'mattn/emmet-vim'
 	" newer language support"''
-	Plug 'sheerun/vim-polyglot'         
+	"Plug 'sheerun/vim-polyglot'         
 	" supertab
 	Plug 'ervandew/supertab'
 	" php autocomplete
 	Plug 'shawncplus/phpcomplete.vim'
+	
+	"NCM2
+	Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+	"Plug 'phpactor/ncm2-phpactor'
+
 call plug#end() 
 " FIN PLUGINS  =====================================================
 
@@ -25,20 +31,19 @@ filetype plugin indent on
 
 
 " activa el autocomplete de vim
-set omnifunc=phpcomplete#CompletePHP
+"set omnifunc=phpcomplete#CompletePHP
 
 "auto FileType php 
 
 " nros de linea
 set number
-
-" tab cuatro espacios
-set tabstop=4
-set softtabstop=0 noexpandtab
-set shiftwidth=4
-
 " linea actual
 set cursorline
+" tab cuatro espacios
+set tabstop=4
+"set softtabstop=0 noexpandtab
+set shiftwidth=4
+
 
 "tabs y espacios visibles
 set list listchars=tab:⎸\ ,nbsp:⎕
@@ -59,10 +64,10 @@ inoremap { {}<left>
 "set completeopt=noinsert,menuone,noselect
 
 " SUPERTAB ----------------
-"let g:SuperTabDefaultCompletionType = "context"
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+
 " NERDTREE ----------------
 "open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -82,9 +87,15 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDCustomDelimiters = { 'php': { 'left': '//', 'leftAlt': '<!--', 'right': '','rightAlt': '-->' } }
 " remapea a lo que me gusta
 map ,cc <plug>NERDCommenterToggle
-map ,cv <plug>NERDCommenterAltDelims 
+""map ,cv <plug>NERDCommenterAltDelims 
+map ,cv <plug>NERDCommenterAltDelims <plug>NERDCommenterToggle <plug>NERDCommenterAltDelims
 
 " EMMET ------------------
 " remapea para emmet 
 "let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_leader_key=','
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
