@@ -126,3 +126,5 @@ call arpeggio#map('n', '', 0, ',.', ':w<CR>')
 ~/.local/share/nvim/site/autoload/plug.vim
 
 descargar de https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+sudo pip3 install --upgrade neovim
